@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="GejotaTec — Cursos de Power BI, Python, Machine Learning e IA. Aprenda com cases reais da Suzano S.A. Certificado incluso. 7 dias de garantia.">
+<title>GejotaTec — Cursos de Dados & IA | Power BI · Python · ML · NLP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#05080f;--bg2:#080d18;--surface:#0f1624;--surface2:#141e30;--surface3:#1a2540;
+  --accent:#00d4ff;--accent2:#6c3fff;--accent3:#00ff88;--amber:#ffb800;--red:#ff3d5a;
+  --text:#eef2ff;--text2:#8895b3;--text3:#4a5568;
+  --border:rgba(255,255,255,0.06);--border2:rgba(0,212,255,0.18);
+  --font-d:'Syne',sans-serif;--font-b:'DM Sans',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font-b);overflow-x:hidden;line-height:1.6}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--surface3);border-radius:2px}
+
+/* ── URGENCY TOP BAR ── */
+.top-bar{background:linear-gradient(90deg,var(--accent2),#a855f7);padding:.55rem 1rem;text-align:center;font-size:.8rem;font-weight:600;letter-spacing:.01em;position:relative;z-index:300}
+.top-bar span{color:rgba(255,255,255,.8)}
+.top-bar strong{color:#fff}
+.top-bar-timer{display:inline-flex;align-items:center;gap:.3rem;background:rgba(0,0,0,.25);border-radius:4px;padding:.1rem .5rem;margin-left:.5rem;font-family:var(--font-d);font-size:.82rem}
+
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:200;height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;background:rgba(5,8,15,.95);backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
+.logo{font-family:var(--font-d);font-weight:800;font-size:1.1rem;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none;cursor:pointer}
+.nav-links{display:flex;gap:1.75rem;list-style:none}
+.nav-links a{color:var(--text2);text-decoration:none;font-size:.83rem;cursor:pointer;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-right{display:flex;align-items:center;gap:.75rem}
+.cart-btn{position:relative;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:.4rem .8rem;cursor:pointer;font-size:.8rem;color:var(--text2);transition:all .2s;display:flex;align-items:center;gap:.4rem;font-family:var(--font-b)}
+.cart-btn:hover{border-color:rgba(0,212,255,.3);color:var(--text)}
+.cart-badge{position:absolute;top:-.35rem;right:-.35rem;background:var(--red);color:#fff;font-size:.55rem;font-weight:700;width:15px;height:15px;border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0;transform:scale(0);transition:all .3s}
+.cart-badge.on{opacity:1;transform:scale(1)}
+.btn-nav-cta{background:linear-gradient(135deg,var(--accent2),var(--accent));color:#000;font-family:var(--font-d);font-weight:700;font-size:.8rem;padding:.45rem 1.1rem;border-radius:7px;border:none;cursor:pointer;transition:all .2s}
+.btn-nav-cta:hover{opacity:.88;transform:translateY(-1px)}
+.nav-ham{display:none;background:none;border:none;cursor:pointer;color:var(--text2);font-size:1.2rem}
+
+/* ── HERO ── */
+.hero{padding:5rem 2rem 3.5rem;text-align:center;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;pointer-events:none}
+.hbg-grid{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,212,255,0.035) 1px,transparent 1px);background-size:30px 30px}
+.hbg-g1{position:absolute;top:-20%;left:-10%;width:700px;height:700px;background:radial-gradient(ellipse,rgba(108,63,255,.15) 0%,transparent 65%)}
+.hbg-g2{position:absolute;bottom:-10%;right:-5%;width:600px;height:600px;background:radial-gradient(ellipse,rgba(0,212,255,.08) 0%,transparent 65%)}
+
+/* VAGAS LIMITADAS (DIO style) */
+.vagas-pill{display:inline-flex;align-items:center;gap:.6rem;background:rgba(255,61,90,.08);border:1px solid rgba(255,61,90,.25);border-radius:100px;padding:.35rem 1rem;font-size:.75rem;margin-bottom:1.5rem;position:relative;z-index:1}
+.vagas-dot{width:7px;height:7px;border-radius:50%;background:var(--red);animation:blink .8s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+.vagas-txt{color:#ff8099;font-weight:600}
+.vagas-num{color:#fff;font-weight:800;font-family:var(--font-d);font-size:.9rem}
+
+h1{font-family:var(--font-d);font-size:clamp(2.4rem,5.5vw,4.5rem);font-weight:800;line-height:1.06;letter-spacing:-.04em;margin-bottom:1.25rem;position:relative;z-index:1}
+.h-white{color:var(--text)}
+.h-grad{background:linear-gradient(90deg,var(--accent) 0%,#9580ff 50%,var(--accent2) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+.hero-sub{font-size:1.05rem;color:var(--text2);font-weight:300;max-width:580px;margin:0 auto 1rem;line-height:1.75;position:relative;z-index:1}
+.hero-sub strong{color:var(--text)}
+
+/* Logos de empresas (prova social de onde foram aplicados) */
+.company-logos{display:flex;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin:1.5rem auto 2rem;position:relative;z-index:1}
+.company-logos-label{font-size:.7rem;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;width:100%;margin-bottom:.25rem}
+.company-logo{background:var(--surface2);border:1px solid var(--border);border-radius:7px;padding:.4rem .9rem;font-size:.72rem;font-weight:600;color:var(--text3)}
+
+.hero-cta-group{display:flex;gap:.875rem;justify-content:center;flex-wrap:wrap;margin-bottom:2rem;position:relative;z-index:1}
+.btn-hero-main{background:linear-gradient(135deg,var(--accent2),var(--accent));color:#000;font-family:var(--font-d);font-weight:800;font-size:1rem;padding:1rem 2.25rem;border-radius:11px;border:none;cursor:pointer;transition:all .25s;display:inline-flex;align-items:center;gap:.5rem}
+.btn-hero-main:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(108,63,255,.4)}
+.btn-hero-sec{background:transparent;color:var(--text);font-family:var(--font-b);font-size:.9rem;padding:1rem 2rem;border-radius:11px;border:1px solid rgba(0,212,255,.2);cursor:pointer;transition:all .25s}
+.btn-hero-sec:hover{background:rgba(0,212,255,.05);border-color:rgba(0,212,255,.4)}
+
+/* Hero stats row */
+.hero-stats{display:inline-flex;flex-wrap:wrap;justify-content:center;gap:0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface);position:relative;z-index:1}
+.hs{padding:1rem 1.75rem;text-align:center;border-right:1px solid var(--border)}
+.hs:last-child{border-right:none}
+.hs-v{font-family:var(--font-d);font-size:1.4rem;font-weight:800;color:var(--accent);display:block}
+.hs-l{font-size:.68rem;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-top:.1rem}
+
+/* ── COUNTDOWN BANNER ── */
+.cd-banner{background:rgba(255,61,90,.06);border-top:1px solid rgba(255,61,90,.15);border-bottom:1px solid rgba(255,61,90,.15);padding:.9rem 2rem;display:flex;align-items:center;justify-content:center;gap:1.25rem;flex-wrap:wrap}
+.cd-label{font-size:.75rem;font-weight:700;color:#ff8099;text-transform:uppercase;letter-spacing:.08em}
+.cd-blocks{display:flex;gap:.3rem;align-items:center}
+.cd-block{background:rgba(0,0,0,.5);border:1px solid rgba(255,61,90,.2);border-radius:6px;padding:.2rem .55rem;text-align:center;min-width:38px}
+.cd-n{font-family:var(--font-d);font-size:.95rem;font-weight:800;color:#fff;display:block;line-height:1.2}
+.cd-u{font-size:.45rem;color:#ff8099;text-transform:uppercase}
+.cd-sep{color:#ff8099;font-weight:700}
+.cd-savings{background:rgba(255,61,90,.15);border:1px solid rgba(255,61,90,.25);color:#ff8099;font-size:.72rem;font-weight:700;padding:.2rem .6rem;border-radius:5px}
+
+/* ── TRUST BAR ── */
+.trust-bar{background:var(--bg2);border-bottom:1px solid var(--border);padding:.85rem 2rem;display:flex;align-items:center;justify-content:center;gap:2.5rem;flex-wrap:wrap}
+.ti{display:flex;align-items:center;gap:.5rem;font-size:.76rem;color:var(--text2)}
+
+/* ── SECTIONS ── */
+section{padding:5rem 2rem}
+.container{max-width:1100px;margin:0 auto}
+.sec-tag{font-size:.65rem;font-weight:700;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;margin-bottom:.65rem}
+.sec-title{font-family:var(--font-d);font-size:clamp(1.75rem,3vw,2.5rem);font-weight:800;letter-spacing:-.03em;line-height:1.12;margin-bottom:.8rem}
+.sec-sub{color:var(--text2);font-size:.95rem;font-weight:300;max-width:520px;line-height:1.75}
+
+/* ── O QUE VOCÊ VAI APRENDER (Udemy style) ── */
+#aprenda{background:var(--bg2)}
+.learn-grid{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-top:2rem}
+.learn-item{display:flex;align-items:start;gap:.75rem;padding:.6rem .5rem}
+.learn-check{width:20px;height:20px;background:rgba(0,255,136,.12);border:1px solid rgba(0,255,136,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.65rem;color:var(--accent3);flex-shrink:0;margin-top:.1rem}
+.learn-text{font-size:.85rem;color:var(--text2);line-height:1.5}
+
+/* ── COURSES ── */
+#cursos{background:var(--bg)}
+
+.filter-bar{display:flex;gap:.4rem;flex-wrap:wrap;margin:1.75rem 0;align-items:center}
+.fl{font-size:.72rem;color:var(--text3);margin-right:.2rem}
+.f-btn{background:transparent;border:1px solid var(--border);color:var(--text2);font-family:var(--font-b);font-size:.76rem;padding:.32rem .85rem;border-radius:100px;cursor:pointer;transition:all .2s}
+.f-btn.active,.f-btn:hover{background:rgba(0,212,255,.08);border-color:rgba(0,212,255,.28);color:var(--accent)}
+
+.courses-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(308px,1fr));gap:1.2rem}
+
+/* Course card */
+.course-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:all .28s;position:relative}
+.course-card:hover{border-color:rgba(108,63,255,.45);transform:translateY(-5px);box-shadow:0 24px 48px rgba(0,0,0,.4)}
+.cc-thumb{height:150px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.cc-emoji{font-size:3.5rem;position:relative;z-index:1;filter:drop-shadow(0 4px 16px rgba(0,0,0,.5))}
+.cc-thumb::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 35%,var(--surface))}
+.badge-row{position:absolute;top:.6rem;left:.6rem;right:.6rem;display:flex;justify-content:space-between;z-index:2}
+.badge{font-size:.58rem;font-weight:700;padding:.14rem .48rem;border-radius:4px;text-transform:uppercase;letter-spacing:.04em}
+.b-hot{background:#991b1b;color:#fca5a5}
+.b-new{background:#064e3b;color:#6ee7b7}
+.b-best{background:#78350f;color:#fde68a}
+.b-lvl{background:rgba(0,0,0,.65);color:var(--text2);border:1px solid rgba(255,255,255,.08)}
+
+/* Students online (DIO style urgency) */
+.cc-live{position:absolute;bottom:.6rem;left:.6rem;z-index:2;display:flex;align-items:center;gap:.35rem;background:rgba(0,0,0,.7);border-radius:5px;padding:.18rem .55rem;font-size:.62rem;color:#fff}
+.live-dot{width:5px;height:5px;border-radius:50%;background:var(--accent3);animation:blink .8s infinite}
+
+.cc-body{padding:1rem 1.2rem;flex:1;display:flex;flex-direction:column;gap:.3rem}
+.cc-cat{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em}
+.cc-title{font-family:var(--font-d);font-size:.95rem;font-weight:700;line-height:1.3}
+.cc-desc{font-size:.78rem;color:var(--text2);line-height:1.6;font-weight:300;flex:1}
+
+/* Progress bar (how many enrolled this week) */
+.cc-progress{margin:.35rem 0}
+.cc-prog-label{display:flex;justify-content:space-between;font-size:.62rem;color:var(--text3);margin-bottom:.25rem}
+.cc-prog-label span:last-child{color:var(--red);font-weight:600}
+.cc-prog-bar{background:var(--surface3);border-radius:3px;height:4px}
+.cc-prog-fill{height:4px;border-radius:3px;background:linear-gradient(90deg,var(--red),#ff8c69);transition:width .6s}
+
+.cc-meta{display:flex;gap:.65rem;flex-wrap:wrap}
+.cc-meta span{font-size:.68rem;color:var(--text3)}
+.cc-stars{color:#f59e0b;font-size:.68rem}
+.cc-rat{font-size:.68rem;color:var(--text3)}
+
+.cc-price-row{display:flex;align-items:center;justify-content:space-between;gap:.5rem;margin-top:.5rem;padding-top:.7rem;border-top:1px solid var(--border)}
+.cc-price-old{font-size:.7rem;color:var(--text3);text-decoration:line-through}
+.cc-price-new{font-family:var(--font-d);font-size:1.2rem;font-weight:800;line-height:1}
+.cc-disc{background:rgba(0,255,136,.1);color:var(--accent3);border:1px solid rgba(0,255,136,.18);font-size:.58rem;font-weight:700;padding:.09rem .38rem;border-radius:4px;margin-left:.3rem;vertical-align:middle}
+.btn-comprar{background:linear-gradient(135deg,var(--accent2),#5533cc);color:#fff;border:none;border-radius:8px;padding:.55rem .95rem;cursor:pointer;font-family:var(--font-d);font-size:.76rem;font-weight:700;transition:all .25s;flex-shrink:0;white-space:nowrap}
+.btn-comprar:hover{transform:scale(1.05);box-shadow:0 6px 18px rgba(108,63,255,.4)}
+.btn-comprar.added{background:linear-gradient(135deg,#065f46,#047857)}
+
+.cc-guarantee{padding:.5rem 1.2rem;background:rgba(0,255,136,.03);border-top:1px solid rgba(0,255,136,.07);font-size:.64rem;color:rgba(0,255,136,.6)}
+
+/* ── O QUE ESTÁ INCLUÍDO (preço âncora + planos) ── */
+#planos{background:var(--bg2)}
+.plans-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1.2rem;margin-top:3rem}
+.plan-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.75rem;position:relative;transition:all .25s}
+.plan-card.featured{border-color:rgba(0,212,255,.3);background:linear-gradient(135deg,var(--surface),rgba(0,212,255,.03))}
+.plan-badge{position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:linear-gradient(90deg,var(--accent2),var(--accent));color:#000;font-family:var(--font-d);font-size:.68rem;font-weight:800;padding:.2rem .85rem;border-radius:100px;white-space:nowrap}
+.plan-name{font-family:var(--font-d);font-size:1rem;font-weight:700;margin-bottom:.25rem}
+.plan-desc{font-size:.78rem;color:var(--text2);margin-bottom:1.25rem;font-weight:300}
+.plan-price-old{font-size:.78rem;color:var(--text3);text-decoration:line-through;margin-bottom:.1rem}
+.plan-price{font-family:var(--font-d);font-size:2rem;font-weight:800;color:var(--text);margin-bottom:1.25rem}
+.plan-price span{font-size:.9rem;font-weight:400;color:var(--text2)}
+.plan-features{list-style:none;display:flex;flex-direction:column;gap:.55rem;margin-bottom:1.5rem}
+.plan-features li{display:flex;align-items:start;gap:.6rem;font-size:.82rem;color:var(--text2)}
+.plan-features li::before{content:'✓';color:var(--accent3);font-weight:700;flex-shrink:0;margin-top:.05rem}
+.plan-features li.no::before{content:'×';color:var(--text3)}
+.plan-features li.no{color:var(--text3)}
+.btn-plan{width:100%;padding:.85rem;border-radius:9px;font-family:var(--font-d);font-weight:700;font-size:.88rem;cursor:pointer;border:none;transition:all .2s}
+.btn-plan-main{background:linear-gradient(135deg,var(--accent2),var(--accent));color:#000}
+.btn-plan-main:hover{opacity:.9;transform:translateY(-1px)}
+.btn-plan-outline{background:transparent;color:var(--text);border:1px solid var(--border)}
+.btn-plan-outline:hover{border-color:rgba(0,212,255,.3)}
+
+/* ── TRILHAS DE CARREIRA (DIO style) ── */
+#trilhas{background:var(--bg)}
+.trilhas-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem;margin-top:2.5rem}
+.trilha-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.25rem;transition:all .25s;cursor:pointer}
+.trilha-card:hover{border-color:rgba(0,212,255,.25);transform:translateY(-3px)}
+.trilha-icon{font-size:1.75rem;margin-bottom:.65rem}
+.trilha-name{font-family:var(--font-d);font-size:.9rem;font-weight:700;margin-bottom:.3rem}
+.trilha-desc{font-size:.76rem;color:var(--text2);line-height:1.5;margin-bottom:.75rem}
+.trilha-meta{display:flex;gap:.75rem}
+.trilha-tag{font-size:.62rem;background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:.1rem .4rem;color:var(--text3)}
+
+/* ── DEPOIMENTOS ── */
+#depoimentos{background:var(--bg2)}
+.test-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1.1rem;margin-top:2.5rem}
+.test-card{background:var(--surface);border:1px solid var(--border);border-radius:13px;padding:1.35rem}
+.test-stars{color:#f59e0b;font-size:.72rem;margin-bottom:.65rem;letter-spacing:.1em}
+.test-text{font-size:.85rem;color:var(--text2);line-height:1.75;font-weight:300;font-style:italic;margin-bottom:1rem;border-left:2px solid var(--surface3);padding-left:.75rem}
+.test-author{display:flex;align-items:center;gap:.75rem}
+.test-av{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--accent2),var(--accent));display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:800;color:#000;flex-shrink:0}
+.test-name{font-size:.82rem;font-weight:600}
+.test-role{font-size:.68rem;color:var(--text3)}
+.test-result{margin-top:.75rem;background:rgba(0,255,136,.06);border:1px solid rgba(0,255,136,.12);border-radius:7px;padding:.5rem .75rem;font-size:.72rem;color:var(--accent3)}
+.test-result strong{display:block;font-size:.65rem;color:rgba(0,255,136,.5);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.1rem}
+
+/* ── FAQ ── */
+#faq{background:var(--bg)}
+.faq-list{margin-top:2.5rem;display:flex;flex-direction:column;gap:.75rem;max-width:720px}
+.faq-item{background:var(--surface);border:1px solid var(--border);border-radius:11px;overflow:hidden}
+.faq-q{width:100%;background:none;border:none;padding:1rem 1.25rem;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:var(--font-b);font-size:.875rem;color:var(--text);font-weight:500;transition:background .2s}
+.faq-q:hover{background:var(--surface2)}
+.faq-icon{color:var(--accent);font-size:1.1rem;flex-shrink:0;transition:transform .25s}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+.faq-a{display:none;padding:0 1.25rem 1rem;font-size:.84rem;color:var(--text2);line-height:1.75;font-weight:300}
+.faq-item.open .faq-a{display:block}
+
+/* ── SOBRE ── */
+#sobre{background:var(--bg2)}
+.sobre-wrap{display:grid;grid-template-columns:280px 1fr;gap:3.5rem;align-items:start;margin-top:2.5rem}
+.sobre-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.75rem;text-align:center;position:sticky;top:70px}
+.sobre-av{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--accent2),var(--accent));display:flex;align-items:center;justify-content:center;font-family:var(--font-d);font-size:1.6rem;font-weight:800;color:#000;margin:0 auto .875rem}
+.sobre-nome{font-family:var(--font-d);font-size:1rem;font-weight:700}
+.sobre-cargo{font-size:.78rem;color:var(--accent);margin:.2rem 0 .1rem}
+.sobre-emp{font-size:.72rem;color:var(--text3);margin-bottom:1rem}
+.sobre-tags{display:flex;flex-wrap:wrap;gap:.35rem;justify-content:center}
+.stag{background:var(--surface2);border:1px solid var(--border);border-radius:5px;font-size:.62rem;color:var(--text2);padding:.15rem .45rem}
+.sobre-right{}
+.sobre-bio{font-size:.9rem;color:var(--text2);line-height:1.8;font-weight:300;margin-bottom:1.5rem;border-left:2px solid var(--accent2);padding-left:1rem}
+.conquistas{display:flex;flex-direction:column;gap:.75rem}
+.conquista{display:flex;gap:.875rem;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:.875rem 1rem;align-items:start}
+.conquista-icon{font-size:1.1rem;flex-shrink:0}
+.conquista-txt{font-size:.82rem;color:var(--text2);line-height:1.5}
+.conquista-txt strong{color:var(--text);display:block;margin-bottom:.1rem}
+
+/* ── CTA FINAL ── */
+.cta-final{background:linear-gradient(135deg,rgba(108,63,255,.14),rgba(0,212,255,.07));border-top:1px solid var(--border);padding:5.5rem 2rem;text-align:center}
+.cta-final h2{font-family:var(--font-d);font-size:clamp(1.75rem,3.5vw,2.75rem);font-weight:800;letter-spacing:-.04em;margin-bottom:.875rem}
+.cta-final p{color:var(--text2);font-size:.95rem;font-weight:300;margin-bottom:2rem;max-width:480px;margin-left:auto;margin-right:auto}
+.cta-guarantee-row{display:flex;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-top:1.25rem}
+.cg-item{display:flex;align-items:center;gap:.4rem;font-size:.78rem;color:var(--text2)}
+
+/* ── FOOTER ── */
+footer{background:var(--bg);border-top:1px solid var(--border);padding:2.5rem 2rem}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.footer-links{display:flex;gap:1.5rem;flex-wrap:wrap}
+.footer-links a{font-size:.76rem;color:var(--text3);cursor:pointer;transition:color .2s;text-decoration:none}
+.footer-links a:hover{color:var(--text2)}
+.footer-copy{font-size:.72rem;color:var(--text3)}
+
+/* ── CART DRAWER ── */
+.cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:400;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(4px)}
+.cart-overlay.open{opacity:1;pointer-events:all}
+.cart-drawer{position:fixed;top:0;right:0;bottom:0;width:min(400px,100vw);background:var(--bg2);border-left:1px solid var(--border);z-index:401;transform:translateX(100%);transition:transform .35s cubic-bezier(.16,1,.3,1);display:flex;flex-direction:column}
+.cart-drawer.open{transform:none}
+.cd-head{padding:1rem 1.4rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.cd-head h3{font-family:var(--font-d);font-size:.975rem;font-weight:700}
+.cd-close{background:var(--surface2);border:1px solid var(--border);border-radius:7px;width:28px;height:28px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text2);font-size:.8rem;transition:all .2s}
+.cd-close:hover{color:var(--text)}
+.cd-body{flex:1;overflow-y:auto;padding:.875rem 1.4rem}
+.cd-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:.65rem;color:var(--text3)}
+.cd-empty-ico{font-size:2.5rem;opacity:.3}
+.cd-item{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:.8rem;margin-bottom:.55rem;display:flex;gap:.8rem;align-items:start;animation:si .22s ease}
+@keyframes si{from{opacity:0;transform:translateX(12px)}to{opacity:1;transform:none}}
+.cdi-thumb{width:38px;height:38px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.cdi-info{flex:1;min-width:0}
+.cdi-title{font-family:var(--font-d);font-size:.78rem;font-weight:600;line-height:1.3}
+.cdi-price{font-size:.76rem;color:var(--accent);font-weight:600;margin-top:.12rem}
+.cdi-rm{background:none;border:none;cursor:pointer;color:var(--text3);font-size:.7rem;padding:.12rem .3rem;border-radius:4px;transition:all .2s;flex-shrink:0}
+.cdi-rm:hover{color:var(--red);background:rgba(255,61,90,.1)}
+.cd-foot{padding:1rem 1.4rem;border-top:1px solid var(--border);flex-shrink:0}
+.cd-row{display:flex;justify-content:space-between;font-size:.8rem;color:var(--text2);margin-bottom:.35rem}
+.cd-row.disc{color:var(--accent3)}
+.cd-total-row{display:flex;justify-content:space-between;align-items:center;padding:.65rem 0 1rem;border-top:1px solid var(--border);margin-top:.35rem}
+.cd-total-lbl{font-family:var(--font-d);font-weight:700;font-size:.9rem}
+.cd-total-val{font-family:var(--font-d);font-size:1.35rem;font-weight:800;color:var(--accent)}
+.btn-ck{width:100%;padding:.875rem;background:linear-gradient(135deg,var(--accent2),var(--accent));color:#000;font-family:var(--font-d);font-weight:800;font-size:.875rem;border:none;border-radius:10px;cursor:pointer;transition:all .2s}
+.btn-ck:hover{opacity:.9;transform:translateY(-1px)}
+.cd-secure{text-align:center;font-size:.65rem;color:var(--text3);margin-top:.55rem}
+
+/* ── SOCIAL PROOF POPUP ── */
+.sp-popup{position:fixed;bottom:1.25rem;left:1.25rem;z-index:500;background:var(--surface);border:1px solid rgba(255,255,255,.09);border-radius:12px;padding:.8rem 1rem;display:flex;align-items:center;gap:.75rem;max-width:275px;box-shadow:0 16px 40px rgba(0,0,0,.55);transform:translateX(-130%);transition:transform .4s cubic-bezier(.16,1,.3,1)}
+.sp-popup.show{transform:none}
+.sp-av{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--accent2),var(--accent));display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;color:#000;flex-shrink:0}
+.sp-body{font-size:.7rem;line-height:1.5;color:var(--text2)}
+.sp-name{color:var(--text);font-weight:600;font-size:.72rem}
+.sp-time{font-size:.6rem;color:var(--text3);margin-top:.08rem}
+.sp-live{width:5px;height:5px;border-radius:50%;background:var(--accent3);flex-shrink:0;animation:blink .8s infinite}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* ── RESPONSIVE ── */
+@media(max-width:960px){.sobre-wrap{grid-template-columns:1fr}.sobre-card{position:static}}
+@media(max-width:640px){
+  nav{padding:0 1.1rem}.nav-links{display:none}.nav-ham{display:block}
+  section{padding:3.5rem 1.2rem}.hero{padding:4rem 1.2rem 2.5rem}
+  h1{font-size:2.3rem}.hero-stats{flex-direction:column;border-radius:12px}
+  .hs{border-right:none;border-bottom:1px solid var(--border);padding:.875rem 2rem}
+  .hs:last-child{border-bottom:none}
+  .courses-grid,.plans-grid,.trilhas-grid,.test-grid{grid-template-columns:1fr}
+  .learn-grid{grid-template-columns:1fr}
+  .top-bar{font-size:.72rem}.trust-bar{gap:1rem}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR urgência -->
+<div class="top-bar">
+  <strong>🔥 Oferta por tempo limitado:</strong>
+  <span> Cursos com até 60% OFF — acaba em</span>
+  <span class="top-bar-timer" id="tbTimer">00:00:00</span>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" onclick="goTo('hero')">GEJOTATEC</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a onclick="goTo('cursos')">Cursos</a></li>
+    <li><a onclick="goTo('trilhas')">Trilhas</a></li>
+    <li><a onclick="goTo('planos')">Planos</a></li>
+    <li><a onclick="goTo('depoimentos')">Depoimentos</a></li>
+    <li><a onclick="goTo('sobre')">Sobre</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="cart-btn" onclick="openCart()">
+      🛒 Carrinho
+      <span class="cart-badge" id="cartBadge">0</span>
+    </button>
+    <button class="btn-nav-cta" onclick="goTo('cursos')">Começar agora →</button>
+    <button class="nav-ham" onclick="toggleMenu()">☰</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg"><div class="hbg-grid"></div><div class="hbg-g1"></div><div class="hbg-g2"></div></div>
+
+  <!-- VAGAS LIMITADAS (gatilho escassez — DIO style) -->
+  <div class="vagas-pill">
+    <div class="vagas-dot"></div>
+    <span class="vagas-txt">Apenas</span>
+    <span class="vagas-num" id="vagasNum">37</span>
+    <span class="vagas-txt">bolsas disponíveis este mês</span>
+  </div>
+
+  <h1>
+    <span class="h-white">Do dado bruto à</span><br>
+    <span class="h-grad">decisão inteligente.</span>
+  </h1>
+
+  <p class="hero-sub">
+    Cursos práticos em <strong>Power BI, Python, Machine Learning e NLP</strong> — com cases reais aplicados na Suzano S.A., conteúdo gerado por IA e certificado reconhecido.
+  </p>
+
+  <!-- Logos (prova social de autoridade) -->
+  <div class="company-logos">
+    <div class="company-logos-label">Cases baseados em projetos reais de:</div>
+    <div class="company-logo">Suzano S.A.</div>
+    <div class="company-logo">USP · Esalq</div>
+    <div class="company-logo">Via Santony</div>
+    <div class="company-logo">GejotaTec</div>
+  </div>
+
+  <div class="hero-cta-group">
+    <button class="btn-hero-main" onclick="goTo('cursos')">🚀 Ver todos os cursos</button>
+    <button class="btn-hero-sec" onclick="goTo('trilhas')">Explorar trilhas de carreira</button>
+  </div>
+
+  <div class="hero-stats">
+    <div class="hs"><span class="hs-v">+2.400</span><span class="hs-l">Alunos ativos</span></div>
+    <div class="hs"><span class="hs-v">4</span><span class="hs-l">Cursos</span></div>
+    <div class="hs"><span class="hs-v">4.9★</span><span class="hs-l">Avaliação</span></div>
+    <div class="hs"><span class="hs-v">100%</span><span class="hs-l">Online</span></div>
+    <div class="hs"><span class="hs-v">7 dias</span><span class="hs-l">Garantia</span></div>
+  </div>
+</section>
+
+<!-- COUNTDOWN -->
+<div class="cd-banner">
+  <span class="cd-label">⏰ Oferta expira em:</span>
+  <div class="cd-blocks">
+    <div class="cd-block"><span class="cd-n" id="cdH">00</span><span class="cd-u">horas</span></div>
+    <span class="cd-sep">:</span>
+    <div class="cd-block"><span class="cd-n" id="cdM">00</span><span class="cd-u">min</span></div>
+    <span class="cd-sep">:</span>
+    <div class="cd-block"><span class="cd-n" id="cdS">00</span><span class="cd-u">seg</span></div>
+  </div>
+  <span class="cd-savings">💸 Economize até R$ 297</span>
+</div>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="ti">🔒 Pagamento seguro</div>
+  <div class="ti">♾️ Acesso vitalício</div>
+  <div class="ti">🎓 Certificado incluso</div>
+  <div class="ti">↩️ 7 dias de garantia</div>
+  <div class="ti">🤖 Conteúdo com IA</div>
+  <div class="ti">🌐 4 idiomas</div>
+</div>
+
+<!-- O QUE VOCÊ VAI APRENDER (Udemy style) -->
+<section id="aprenda">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-tag">Resultado garantido</div>
+      <h2 class="sec-title">O que você vai dominar</h2>
+      <p class="sec-sub">Ao completar os cursos GejotaTec, você vai saber fazer o que a maioria dos analistas não sabe.</p>
+    </div>
+    <div class="learn-grid reveal">
+      <div class="learn-item"><div class="learn-check">✓</div><span class="learn-text">Criar dashboards executivos em Power BI do zero, com DAX avançado e conexão a múltiplas fontes</span></div>
+      <div class="learn-item"><div class="learn-check">✓</div><span class="learn-text">Construir modelos preditivos com Python, sklearn e XGBoost com acurácia acima de 90%</span></div>
+      <div class="learn-item"><div class="learn-check">✓</div><span class="learn-text">Automatizar relatórios e processos com Excel VBA e Python, economizando horas por semana</span></div>
+      <div class="learn-item"><div class="learn-check">✓</div><span class="learn-text">Aplicar NLP e LLMs para análise de texto, clusterização e automação de e-mails corporativos</span></div>
+      <div class="learn-item"><div class="learn-check">✓</div><span class="learn-text">Usar SQL e GCP para pipelines de dados profissionais em ambientes de produção</span></div>
+      <div class="learn-item"><div class="learn-check">✓</div><span class="learn-text">Apresentar análises de dados para gestores com clareza e impacto de negócio mensurável</span></div>
+      <div class="learn-item"><div class="learn-check">✓</div><span class="learn-text">Obter certificado digital para adicionar no LinkedIn e compravar habilidades para recrutadores</span></div>
+      <div class="learn-item"><div class="learn-check">✓</div><span class="learn-text">Trabalhar com datasets reais de empresas como Suzano S.A. — não apenas dados fictícios</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CURSOS -->
+<section id="cursos">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-tag">Catálogo completo</div>
+      <h2 class="sec-title">Escolha seu curso</h2>
+      <p class="sec-sub">Do iniciante ao avançado — do clique ao deploy. Cases reais, exercícios interativos, certificado incluso.</p>
+    </div>
+    <div class="filter-bar">
+      <span class="fl">Filtrar:</span>
+      <button class="f-btn active" onclick="filterGrid('all',this)">Todos</button>
+      <button class="f-btn" onclick="filterGrid('bi',this)">📊 Power BI</button>
+      <button class="f-btn" onclick="filterGrid('ml',this)">🤖 Machine Learning</button>
+      <button class="f-btn" onclick="filterGrid('excel',this)">📋 Excel</button>
+      <button class="f-btn" onclick="filterGrid('ia',this)">🧠 NLP & IA</button>
+    </div>
+    <div class="courses-grid" id="coursesGrid"></div>
+  </div>
+</section>
+
+<!-- TRILHAS DE CARREIRA (DIO style) -->
+<section id="trilhas">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-tag">Trilhas de carreira</div>
+      <h2 class="sec-title">Para qual carreira você está se preparando?</h2>
+      <p class="sec-sub">Monte sua trilha personalizada combinando os cursos certos para o seu objetivo profissional.</p>
+    </div>
+    <div class="trilhas-grid">
+      <div class="trilha-card reveal" onclick="goTo('cursos')">
+        <div class="trilha-icon">📊</div>
+        <div class="trilha-name">Analista de BI</div>
+        <div class="trilha-desc">Power BI, DAX, SQL, visualização de dados e storytelling para negócios.</div>
+        <div class="trilha-meta"><span class="trilha-tag">1 curso</span><span class="trilha-tag">4h</span><span class="trilha-tag">Iniciante</span></div>
+      </div>
+      <div class="trilha-card reveal" style="transition-delay:.07s" onclick="goTo('cursos')">
+        <div class="trilha-icon">🤖</div>
+        <div class="trilha-name">Data Scientist</div>
+        <div class="trilha-desc">Python, pandas, sklearn, XGBoost e deploy de modelos de Machine Learning.</div>
+        <div class="trilha-meta"><span class="trilha-tag">2 cursos</span><span class="trilha-tag">11h</span><span class="trilha-tag">Intermediário</span></div>
+      </div>
+      <div class="trilha-card reveal" style="transition-delay:.14s" onclick="goTo('cursos')">
+        <div class="trilha-icon">🧠</div>
+        <div class="trilha-name">AI & NLP Engineer</div>
+        <div class="trilha-desc">NLP, TF-IDF, K-Means, LLMs e pipelines de texto para aplicações corporativas.</div>
+        <div class="trilha-meta"><span class="trilha-tag">1 curso</span><span class="trilha-tag">5h</span><span class="trilha-tag">Avançado</span></div>
+      </div>
+      <div class="trilha-card reveal" style="transition-delay:.21s" onclick="goTo('cursos')">
+        <div class="trilha-icon">📋</div>
+        <div class="trilha-name">Analista de Negócios</div>
+        <div class="trilha-desc">Excel avançado, automação VBA, dashboards e relatórios executivos de alta produtividade.</div>
+        <div class="trilha-meta"><span class="trilha-tag">1 curso</span><span class="trilha-tag">3h</span><span class="trilha-tag">Iniciante</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANOS (price anchoring) -->
+<section id="planos">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-tag">Planos & preços</div>
+      <h2 class="sec-title">Escolha o melhor plano</h2>
+      <p class="sec-sub">Invista no que faz sentido para o seu momento. Todos com garantia de 7 dias.</p>
+    </div>
+    <div class="plans-grid">
+      <!-- PLANO 1 -->
+      <div class="plan-card reveal">
+        <div class="plan-name">Curso avulso</div>
+        <div class="plan-desc">Ideal para quem quer aprender uma habilidade específica rapidamente.</div>
+        <div class="plan-price-old">A partir de R$ 294</div>
+        <div class="plan-price">R$ 147 <span>/ curso</span></div>
+        <ul class="plan-features">
+          <li>Acesso vitalício ao curso</li>
+          <li>Certificado de conclusão</li>
+          <li>Exercícios práticos com IA</li>
+          <li>Aulas geradas por IA</li>
+          <li class="no">Acesso a todos os cursos</li>
+          <li class="no">Trilha personalizada</li>
+          <li class="no">Suporte prioritário</li>
+        </ul>
+        <button class="btn-plan btn-plan-outline" onclick="goTo('cursos')">Escolher curso →</button>
+      </div>
+      <!-- PLANO 2 (destaque) -->
+      <div class="plan-card featured reveal" style="transition-delay:.08s">
+        <div class="plan-badge">⭐ Mais escolhido</div>
+        <div class="plan-name">Bundle Completo</div>
+        <div class="plan-desc">Todos os 4 cursos com 55% de desconto. O investimento mais inteligente.</div>
+        <div class="plan-price-old">R$ 888</div>
+        <div class="plan-price">R$ 397 <span>/ único</span></div>
+        <ul class="plan-features">
+          <li>Acesso vitalício aos 4 cursos</li>
+          <li>4 certificados de conclusão</li>
+          <li>Todos os exercícios práticos</li>
+          <li>Conteúdo gerado por IA</li>
+          <li>Trilha de carreira guiada</li>
+          <li>Atualizações futuras grátis</li>
+          <li>Suporte via e-mail</li>
+        </ul>
+        <button class="btn-plan btn-plan-main" onclick="addBundleToCart()">Quero o bundle completo →</button>
+      </div>
+      <!-- PLANO 3 -->
+      <div class="plan-card reveal" style="transition-delay:.16s">
+        <div class="plan-name">Mentoria Individual</div>
+        <div class="plan-desc">Bundle completo + 2 sessões de mentoria ao vivo com o Guilherme.</div>
+        <div class="plan-price-old">R$ 1.288</div>
+        <div class="plan-price">R$ 697 <span>/ pacote</span></div>
+        <ul class="plan-features">
+          <li>Tudo do Bundle Completo</li>
+          <li>2 sessões 1:1 (50min cada)</li>
+          <li>Revisão do seu portfólio</li>
+          <li>Feedback de projetos reais</li>
+          <li>LinkedIn e currículo revisados</li>
+          <li>Indicação para vagas</li>
+          <li>Suporte prioritário WhatsApp</li>
+        </ul>
+        <button class="btn-plan btn-plan-outline" onclick="window.location.href='mailto:guilherme.jorge231@gmail.com?subject=Mentoria Individual GejotaTec'">Agendar mentoria →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section id="depoimentos">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-tag">Prova social</div>
+      <h2 class="sec-title">Resultados reais de alunos reais</h2>
+    </div>
+    <div class="test-grid">
+      <div class="test-card reveal">
+        <div class="test-stars">★★★★★</div>
+        <div class="test-text">"Em 3 semanas consegui criar um dashboard que meu gerente apresentou para a diretoria. O case da Suzano foi crucial — não era dado fictício, era problema real com solução real."</div>
+        <div class="test-author"><div class="test-av">MC</div><div><div class="test-name">Mariana C.</div><div class="test-role">Analista de BI · Porto Alegre</div></div></div>
+        <div class="test-result"><strong>Resultado obtido</strong>Promoção de Analista Jr para Pleno após 2 meses do curso</div>
+      </div>
+      <div class="test-card reveal" style="transition-delay:.08s">
+        <div class="test-stars">★★★★★</div>
+        <div class="test-text">"Eu tinha medo de Python. O curso começou do absoluto zero e de forma muito natural chegou em XGBoost. O que mais me impressionou foi o conteúdo da IA — explicações melhores que vídeo."</div>
+        <div class="test-author"><div class="test-av">LP</div><div><div class="test-name">Lucas P.</div><div class="test-role">Engenheiro Industrial · Campinas</div></div></div>
+        <div class="test-result"><strong>Resultado obtido</strong>Modelo de previsão de falhas economizando R$ 40k/mês na empresa</div>
+      </div>
+      <div class="test-card reveal" style="transition-delay:.16s">
+        <div class="test-stars">★★★★★</div>
+        <div class="test-text">"Usei o curso de NLP como base para meu TCC do MBA. A abordagem com TF-IDF + K-Means + GMM é exatamente o que está sendo usado no mercado. Aprovada com nota máxima."</div>
+        <div class="test-author"><div class="test-av">FR</div><div><div class="test-name">Fernanda R.</div><div class="test-role">Mestranda em Data Science · BH</div></div></div>
+        <div class="test-result"><strong>Resultado obtido</strong>TCC aprovado com distinção na USP — banca elogiou a metodologia</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-tag">Dúvidas frequentes</div>
+      <h2 class="sec-title">Perguntas frequentes</h2>
+    </div>
+    <div class="faq-list" id="faqList">
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Preciso ter experiência prévia? <span class="faq-icon">+</span></button><div class="faq-a">Não. Os cursos de Power BI e Excel foram projetados para iniciantes completos. O de Python requer apenas lógica básica. O de NLP é avançado e indica experiência com Python.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Como funciona a garantia de 7 dias? <span class="faq-icon">+</span></button><div class="faq-a">Se dentro de 7 dias após a compra você não ficar satisfeito, devolvemos 100% do valor pago sem perguntas. Basta enviar um e-mail para guilherme.jorge231@gmail.com.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">O certificado é reconhecido? <span class="faq-icon">+</span></button><div class="faq-a">O certificado GejotaTec é digital e pode ser adicionado ao LinkedIn, currículo e portfólio. Ele comprova as habilidades técnicas adquiridas, que são validadas pelos exercícios e projeto final de cada curso.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Por quanto tempo tenho acesso? <span class="faq-icon">+</span></button><div class="faq-a">O acesso é vitalício. Uma vez comprado, o curso é seu para sempre — incluindo todas as atualizações futuras de conteúdo.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Como é gerado o conteúdo das aulas? <span class="faq-icon">+</span></button><div class="faq-a">Cada aula usa a Claude API para gerar explicações claras, exemplos práticos e exercícios personalizados em tempo real. O conteúdo é gerado sob demanda, garantindo que esteja sempre atualizado.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Posso pagar parcelado? <span class="faq-icon">+</span></button><div class="faq-a">Sim. Estamos integrando com Hotmart e Stripe para parcelamento em até 12x. Enquanto isso, entre em contato via WhatsApp ou e-mail para combinarmos a melhor forma de pagamento.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">O Bundle vale a pena versus cursos avulsos? <span class="faq-icon">+</span></button><div class="faq-a">Sim. O Bundle Completo (R$ 397) equivale a comprar os 4 cursos juntos com 55% de desconto em relação ao total de R$ 888 na compra avulsa. Para quem quer uma trilha completa, é o melhor investimento.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-tag">Quem ensina</div>
+      <h2 class="sec-title">Aprenda com quem faz na prática</h2>
+    </div>
+    <div class="sobre-wrap">
+      <div class="sobre-card reveal">
+        <div class="sobre-av">GJ</div>
+        <div class="sobre-nome">Guilherme Jorge</div>
+        <div class="sobre-cargo">Data Analyst & AI Developer</div>
+        <div class="sobre-emp">Suzano S.A. · GejotaTec</div>
+        <div class="sobre-tags">
+          <span class="stag">Power BI</span><span class="stag">Python</span><span class="stag">ML</span>
+          <span class="stag">SQL</span><span class="stag">NLP</span><span class="stag">Next.js</span>
+          <span class="stag">MBA USP</span><span class="stag">GCP</span>
+        </div>
+      </div>
+      <div class="sobre-right reveal" style="transition-delay:.1s">
+        <p class="sobre-bio">Trabalho com dados e IA em produção — não em ambiente acadêmico. Os cursos da GejotaTec são baseados em problemas reais que resolvi para empresas, com os dados, o código e os resultados reais.</p>
+        <div class="conquistas">
+          <div class="conquista"><span class="conquista-icon">📊</span><div class="conquista-txt"><strong>Dashboard de KPIs — Suzano S.A.</strong>Power BI + SQL + GCP para Customer Service. Reduziu tempo de análise em 70% e deu visibilidade em tempo real ao C-level.</div></div>
+          <div class="conquista"><span class="conquista-icon">🤖</span><div class="conquista-txt"><strong>Modelo XGBoost — 94.3% de acurácia</strong>Previsão de padrões operacionais em produção. ROI de 340% no primeiro semestre de uso.</div></div>
+          <div class="conquista"><span class="conquista-icon">🧠</span><div class="conquista-txt"><strong>TCC MBA — NLP aplicado a CRM · USP/Esalq</strong>TF-IDF + K-Means + GMM para clusterização de e-mails corporativos. Base do curso de NLP.</div></div>
+          <div class="conquista"><span class="conquista-icon">🚀</span><div class="conquista-txt"><strong>LogiTrack — SaaS de Logística</strong>Plataforma full-stack (Next.js + Supabase) com dashboards em tempo real para rastreamento de carga.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<div class="cta-final">
+  <h2>Pronto para dar o<br><span style="background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">próximo nível?</span></h2>
+  <p>Mais de 2.400 analistas já avançaram com a GejotaTec. Sua vez chegou.</p>
+  <button class="btn-hero-main" onclick="goTo('cursos')" style="font-size:1.05rem;padding:1.1rem 2.5rem">🚀 Começar agora com 60% OFF</button>
+  <div class="cta-guarantee-row">
+    <div class="cg-item">🔒 Pagamento seguro</div>
+    <div class="cg-item">↩️ 7 dias de garantia</div>
+    <div class="cg-item">♾️ Acesso vitalício</div>
+    <div class="cg-item">🎓 Certificado incluso</div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div style="font-family:var(--font-d);font-weight:800;font-size:1.05rem;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">GEJOTATEC</div>
+    <div class="footer-links">
+      <a onclick="goTo('cursos')">Cursos</a>
+      <a onclick="goTo('trilhas')">Trilhas</a>
+      <a onclick="goTo('planos')">Planos</a>
+      <a onclick="goTo('depoimentos')">Depoimentos</a>
+      <a onclick="goTo('faq')">FAQ</a>
+      <a onclick="goTo('sobre')">Sobre</a>
+      <a href="mailto:guilherme.jorge231@gmail.com">Contato</a>
+    </div>
+    <div class="footer-copy">© 2025 GEJOTATEC — guilherme.jorge231@gmail.com</div>
+  </div>
+</footer>
+
+<!-- CART DRAWER -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cd-head"><h3>🛒 Meu Carrinho</h3><button class="cd-close" onclick="closeCart()">✕</button></div>
+  <div class="cd-body" id="cdBody">
+    <div class="cd-empty" id="cdEmpty"><div class="cd-empty-ico">🛒</div><div style="font-size:.83rem">Carrinho vazio</div><div style="font-size:.73rem;color:var(--text3)">Adicione cursos para começar</div></div>
+    <div id="cdItems"></div>
+  </div>
+  <div class="cd-foot" id="cdFoot" style="display:none">
+    <div class="cd-row"><span>Subtotal</span><span id="cdSubtotal">R$ 0</span></div>
+    <div class="cd-row disc"><span>Desconto</span><span id="cdDiscount">- R$ 0</span></div>
+    <div class="cd-total-row"><span class="cd-total-lbl">Total</span><span class="cd-total-val" id="cdTotal">R$ 0</span></div>
+    <button class="btn-ck" onclick="checkout()">Finalizar compra →</button>
+    <div class="cd-secure">🔒 Seguro · 7 dias de garantia · Acesso imediato</div>
+  </div>
+</div>
+
+<!-- SOCIAL PROOF -->
+<div class="sp-popup" id="spEl">
+  <div class="sp-av" id="spAv">GJ</div>
+  <div class="sp-body"><div class="sp-name" id="spName"></div><div id="spMsg"></div><div class="sp-time" id="spTime"></div></div>
+  <div class="sp-live"></div>
+</div>
+
+<script>
+// ── UTILS ──
+function goTo(id){document.getElementById(id)?.scrollIntoView({behavior:'smooth'})}
+function fmtBRL(v){return v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'})}
+function toggleMenu(){
+  const l=document.getElementById('navLinks');
+  const open=l.style.display==='flex';
+  if(open){l.style.display='none';return}
+  Object.assign(l.style,{display:'flex',flexDirection:'column',position:'absolute',top:'58px',left:'0',right:'0',background:'rgba(5,8,15,.97)',padding:'1.25rem 2rem 1.5rem',borderBottom:'1px solid rgba(255,255,255,.06)',gap:'1rem',zIndex:'199'});
+}
+
+// ── COURSES DATA ──
+const COURSES=[
+  {id:'powerbi',cat:'bi',emoji:'📊',grad:'linear-gradient(135deg,#1e1b4b,#312e81)',color:'#818cf8',badge:'hot',level:'Iniciante',lessons:8,hours:4,students:1240,rating:4.9,reviews:312,disc:50,price:197,enrolledWeek:89,slotsLeft:23,
+   title:'Power BI do Zero ao Avançado',
+   desc:'Dashboards executivos, modelagem de dados e DAX avançado com cases reais da Suzano S.A.',
+   learns:['Criar dashboards executivos','Dominar DAX avançado','Conectar múltiplas fontes de dados','Projeto final com dataset real']},
+  {id:'python',cat:'ml',emoji:'🤖',grad:'linear-gradient(135deg,#052e16,#064e3b)',color:'#34d399',badge:'best',level:'Intermediário',lessons:10,hours:6,students:890,rating:4.8,reviews:198,disc:40,price:247,enrolledWeek:54,slotsLeft:31,
+   title:'Python para Machine Learning',
+   desc:'Modelos preditivos reais com sklearn, XGBoost e pandas. 94.3% de acurácia em projeto aplicado.',
+   learns:['Python do zero ao ML','Regressão, classificação, clustering','XGBoost em produção','Deploy com Streamlit']},
+  {id:'excel',cat:'excel',emoji:'📋',grad:'linear-gradient(135deg,#052e16,#14532d)',color:'#4ade80',badge:'new',level:'Iniciante',lessons:6,hours:3,students:650,rating:4.9,reviews:87,disc:30,price:147,enrolledWeek:41,slotsLeft:48,
+   title:'Excel Avançado para Negócios',
+   desc:'Fórmulas avançadas, tabelas dinâmicas, dashboards e automação VBA para gestores e analistas.',
+   learns:['PROCV, ÍNDICE, CORRESP','Tabelas dinâmicas avançadas','Dashboards visuais','Automação com VBA']},
+  {id:'nlp',cat:'ia',emoji:'🧠',grad:'linear-gradient(135deg,#2d1b69,#4c1d95)',color:'#c084fc',badge:null,level:'Avançado',lessons:8,hours:5,students:420,rating:4.7,reviews:54,disc:60,price:297,enrolledWeek:28,slotsLeft:12,
+   title:'NLP & Análise de Texto com IA',
+   desc:'TF-IDF, K-Means, GMM e LLMs para CRM e e-mails corporativos. Baseado em TCC de MBA na USP.',
+   learns:['TF-IDF e pré-processamento','K-Means e GMM para texto','LLMs via API na prática','Pipeline CRM completo']},
+];
+
+// Bundle (todos os cursos)
+const BUNDLE_IDS=['powerbi','python','excel','nlp'];
+
+// ── CART ──
+let cart=JSON.parse(localStorage.getItem('gejota_cart')||'[]');
+function saveCart(){localStorage.setItem('gejota_cart',JSON.stringify(cart))}
+function calcOld(c){return Math.round(c.price/(1-c.disc/100))}
+
+function addToCart(id,btn){
+  if(cart.includes(id)){openCart();return}
+  cart.push(id);saveCart();updateBadge();renderCart();
+  if(btn){const orig=btn.textContent;btn.textContent='✓ Adicionado!';btn.classList.add('added');setTimeout(()=>{btn.textContent=orig;btn.classList.remove('added');renderGrid()},2000)}
+}
+
+function addBundleToCart(){
+  BUNDLE_IDS.forEach(id=>{if(!cart.includes(id))cart.push(id)});
+  saveCart();updateBadge();renderCart();openCart();
+}
+
+function removeFromCart(id){cart=cart.filter(x=>x!==id);saveCart();updateBadge();renderCart();renderGrid()}
+
+function updateBadge(){
+  const b=document.getElementById('cartBadge');
+  b.textContent=cart.length;b.classList.toggle('on',cart.length>0);
+}
+
+function renderCart(){
+  const items=COURSES.filter(c=>cart.includes(c.id));
+  const empty=document.getElementById('cdEmpty');
+  const itemsEl=document.getElementById('cdItems');
+  const foot=document.getElementById('cdFoot');
+  if(!items.length){empty.style.display='flex';itemsEl.innerHTML='';foot.style.display='none';return}
+  empty.style.display='none';foot.style.display='block';
+  itemsEl.innerHTML=items.map(c=>`
+    <div class="cd-item">
+      <div class="cdi-thumb" style="background:${c.grad}">${c.emoji}</div>
+      <div class="cdi-info"><div class="cdi-title">${c.title}</div><div class="cdi-price">${fmtBRL(c.price)}</div></div>
+      <button class="cdi-rm" onclick="removeFromCart('${c.id}')">✕</button>
+    </div>`).join('');
+  const sub=items.reduce((a,c)=>a+calcOld(c),0);
+  const total=items.reduce((a,c)=>a+c.price,0);
+  document.getElementById('cdSubtotal').textContent=fmtBRL(sub);
+  document.getElementById('cdDiscount').textContent='- '+fmtBRL(sub-total);
+  document.getElementById('cdTotal').textContent=fmtBRL(total);
+}
+
+function openCart(){document.getElementById('cartOverlay').classList.add('open');document.getElementById('cartDrawer').classList.add('open')}
+function closeCart(){document.getElementById('cartOverlay').classList.remove('open');document.getElementById('cartDrawer').classList.remove('open')}
+function checkout(){if(cart.length)alert('Em breve integração com Hotmart e Stripe! Entre em contato: guilherme.jorge231@gmail.com')}
+
+// ── RENDER COURSES ──
+let activeFilter='all';
+function filterGrid(cat,btn){
+  activeFilter=cat;
+  document.querySelectorAll('.f-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');renderGrid();
+}
+
+function renderGrid(){
+  const grid=document.getElementById('coursesGrid');
+  const list=activeFilter==='all'?COURSES:COURSES.filter(c=>c.cat===activeFilter);
+  const BL={hot:'b-hot',new:'b-new',best:'b-best'};
+  const BT={hot:'🔥 Mais vendido',new:'✨ Novo',best:'⭐ Destaque'};
+
+  grid.innerHTML=list.map((c,i)=>{
+    const old=calcOld(c);
+    const inCart=cart.includes(c.id);
+    // Progress bar: slots filled = 100 - slotsLeft (fake scarcity)
+    const filled=Math.round((1-c.slotsLeft/60)*100);
+    return `<div class="course-card reveal" style="transition-delay:${i*65}ms">
+      <div class="cc-thumb" style="background:${c.grad}">
+        <span class="cc-emoji">${c.emoji}</span>
+        <div class="badge-row">
+          ${c.badge?`<span class="badge ${BL[c.badge]}">${BT[c.badge]}</span>`:'<span></span>'}
+          <span class="badge b-lvl">${c.level}</span>
+        </div>
+        <div class="cc-live"><div class="live-dot"></div>${c.enrolledWeek} estudando esta semana</div>
+      </div>
+      <div class="cc-body">
+        <div class="cc-cat" style="color:${c.color}">${c.cat.toUpperCase()}</div>
+        <div class="cc-title">${c.title}</div>
+        <div class="cc-desc">${c.desc}</div>
+        <!-- Escassez de vagas (DIO style) -->
+        <div class="cc-progress">
+          <div class="cc-prog-label"><span>Vagas disponíveis</span><span>Apenas ${c.slotsLeft} restantes!</span></div>
+          <div class="cc-prog-bar"><div class="cc-prog-fill" style="width:${filled}%"></div></div>
+        </div>
+        <div class="cc-meta">
+          <span>📚 ${c.lessons} aulas</span><span>⏱ ${c.hours}h</span><span>👥 ${c.students.toLocaleString()}</span>
+        </div>
+        <div class="cc-meta" style="gap:.4rem">
+          <span class="cc-stars">${'★'.repeat(Math.floor(c.rating))}${'☆'.repeat(5-Math.floor(c.rating))}</span>
+          <span class="cc-rat">${c.rating} (${c.reviews} avaliações)</span>
+        </div>
+        <div class="cc-price-row">
+          <div>
+            <div class="cc-price-old">${fmtBRL(old)}</div>
+            <div class="cc-price-new">${fmtBRL(c.price)}<span class="cc-disc">-${c.disc}%</span></div>
+          </div>
+          <button class="btn-comprar${inCart?' added':''}" onclick="addToCart('${c.id}',this)">
+            ${inCart?'✓ No carrinho':'Comprar agora'}
+          </button>
+        </div>
+      </div>
+      <div class="cc-guarantee">✅ 7 dias de garantia · Acesso vitalício · Certificado incluso</div>
+    </div>`;
+  }).join('');
+  setTimeout(()=>document.querySelectorAll('#coursesGrid .reveal').forEach(el=>el.classList.add('visible')),50);
+}
+
+// ── COUNTDOWN (persistente) ──
+function initCountdown(){
+  const dur=(3*3600+47*60+33)*1000;
+  let end=parseInt(localStorage.getItem('gcd')||'0');
+  if(!end||end<Date.now()){end=Date.now()+dur;localStorage.setItem('gcd',end)}
+  const fmt=n=>String(n).padStart(2,'0');
+  const tick=()=>{
+    const d=Math.max(0,end-Date.now());
+    if(d===0){end=Date.now()+dur;localStorage.setItem('gcd',end)}
+    const h=Math.floor(d/3600000),m=Math.floor((d%3600000)/60000),s=Math.floor((d%60000)/1000);
+    document.getElementById('cdH').textContent=fmt(h);
+    document.getElementById('cdM').textContent=fmt(m);
+    document.getElementById('cdS').textContent=fmt(s);
+    document.getElementById('tbTimer').textContent=`${fmt(h)}:${fmt(m)}:${fmt(s)}`;
+  };
+  tick();setInterval(tick,1000);
+}
+
+// ── VAGAS COUNTER (diminui lentamente) ──
+function initVagas(){
+  let vagas=parseInt(localStorage.getItem('gvagas')||'37');
+  const el=document.getElementById('vagasNum');
+  if(el)el.textContent=vagas;
+  setInterval(()=>{
+    if(vagas>8&&Math.random()<.15){vagas--;localStorage.setItem('gvagas',vagas);if(el)el.textContent=vagas}
+  },45000);
+}
+
+// ── SOCIAL PROOF ──
+const NOTIFS=[
+  {ini:'JS',name:'João S. · São Paulo',msg:'acabou de comprar Power BI do Zero',time:'agora mesmo'},
+  {ini:'AL',name:'Ana L. · Rio de Janeiro',msg:'acabou de comprar Python para ML',time:'1 min atrás'},
+  {ini:'CM',name:'Carlos M. · Curitiba',msg:'acabou de comprar Excel Avançado',time:'3 min atrás'},
+  {ini:'FR',name:'Fernanda R. · Belo Horizonte',msg:'acabou de comprar NLP com IA',time:'5 min atrás'},
+  {ini:'LP',name:'Lucas P. · Campinas',msg:'comprou o Bundle Completo',time:'7 min atrás'},
+  {ini:'MC',name:'Mariana C. · Porto Alegre',msg:'acabou de comprar Python para ML',time:'12 min atrás'},
+  {ini:'RT',name:'Rafael T. · Salvador',msg:'acabou de comprar Power BI do Zero',time:'15 min atrás'},
+  {ini:'BF',name:'Bianca F. · Fortaleza',msg:'comprou o Bundle Completo',time:'18 min atrás'},
+];
+let ni=0;
+function showNotif(){
+  const n=NOTIFS[ni%NOTIFS.length];ni++;
+  const el=document.getElementById('spEl');
+  document.getElementById('spAv').textContent=n.ini;
+  document.getElementById('spName').textContent=n.name;
+  document.getElementById('spMsg').textContent=n.msg;
+  document.getElementById('spTime').textContent=n.time;
+  el.classList.add('show');setTimeout(()=>el.classList.remove('show'),4500);
+}
+
+// ── FAQ ──
+function toggleFaq(btn){
+  const item=btn.closest('.faq-item');
+  const isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+  if(!isOpen)item.classList.add('open');
+}
+
+// ── REVEAL ──
+function initReveal(){
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})
+  },{threshold:.07,rootMargin:'0px 0px -30px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+}
+
+// ── INIT ──
+updateBadge();renderCart();renderGrid();
+initCountdown();initVagas();initReveal();
+setTimeout(()=>{showNotif();setInterval(showNotif,14000)},3500);
+</script>
+</body>
+</html>
